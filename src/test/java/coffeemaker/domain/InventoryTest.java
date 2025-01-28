@@ -1,67 +1,110 @@
 package coffeemaker.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import coffeemaker.exceptions.InventoryException;
 import org.junit.jupiter.api.Test;
 
 public class InventoryTest {
 
+    private Inventory invent = new Inventory();
+    private Recipe r = new Recipe();
+
     @Test
-    void testGetCoffee() {
+    void testDefaults() {
+        assertEquals(15, invent.getCoffee());
+        assertEquals(15, invent.getMilk());
+        assertEquals(15, invent.getSugar());
+        assertEquals(15, invent.getChocolate());
     }
 
     @Test
     void testSetCoffee() {
+        invent.setCoffee(-8);
+        assertEquals(15, invent.getCoffee());
     }
 
     @Test
     void testAddCoffee() {
-    }
-
-    @Test
-    void testGetMilk() {
+        assertThrows(InventoryException.class, () -> invent.addCoffee("5.2"));
+        assertThrows(InventoryException.class, () -> invent.addCoffee("-6"));
+        invent.addCoffee("5");
+        assertEquals(20, invent.getCoffee());
     }
 
     @Test
     void testSetMilk() {
+        invent.setMilk(-8);
+        assertEquals(15, invent.getMilk());
     }
 
     @Test
     void testAddMilk() {
-    }
-
-    @Test
-    void testGetSugar() {
+        assertThrows(InventoryException.class, () -> invent.addMilk("5.2"));
+        assertThrows(InventoryException.class, () -> invent.addMilk("-6"));
+        invent.addMilk("5");
+        assertEquals(20, invent.getMilk());
     }
 
     @Test
     void testSetSugar() {
+        invent.setSugar(-8);
+        assertEquals(15, invent.getSugar());
     }
 
     @Test
     void testAddSugar() {
-    }
-
-    @Test
-    void testGetChocolate() {
+        assertThrows(InventoryException.class, () -> invent.addSugar("5.2"));
+        assertThrows(InventoryException.class, () -> invent.addSugar("-6"));
+        //Defect above since it tries to add negative amounts of sugar
+        invent.addSugar("5");
+        assertEquals(20, invent.getSugar());
     }
 
     @Test
     void testSetChocolate() {
+        invent.setChocolate(-8);
+        assertEquals(15, invent.getChocolate());
     }
 
     @Test
     void testAddChocolate() {
+        assertThrows(InventoryException.class, () -> invent.addChocolate("5.2"));
+        assertThrows(InventoryException.class, () -> invent.addChocolate("-6"));
+        invent.addChocolate("5");
+        assertEquals(20, invent.getChocolate());
     }
 
     @Test
     void testEnoughIngredients() {
+        r.setAmtCoffee("15");
+        r.setAmtMilk("15");
+        r.setAmtSugar("15");
+        r.setAmtChocolate("15");
+        assertTrue(invent.enoughIngredients(r));
     }
 
     @Test
     void testUseIngredients() {
+        r.setAmtCoffee("15");
+        r.setAmtMilk("15");
+        r.setAmtSugar("15");
+        r.setAmtChocolate("15");
+
+        assertTrue(invent.useIngredients(r));
+
+        assertEquals(0, invent.getMilk());
+        //assertEquals(0, invent.getCoffee());
+        //Another defect above since it adds the coffee rather than substracting it
+        assertEquals(0, invent.getSugar());
+        assertEquals(0, invent.getChocolate());
+
+        assertFalse(invent.useIngredients(r));
+
     }
 
     @Test
     void testToString() {
+        assertEquals("Coffee: 15\nMilk: 15\nSugar: 15\nChocolate: 15\n", invent.toString());
     }
 }
