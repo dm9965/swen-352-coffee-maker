@@ -102,7 +102,15 @@ class RecipeTest {
 
     @Test
     void testHashCode() {
+        Recipe recipe1 = new Recipe();
+        Recipe recipe2 = new Recipe();
 
+        recipe.setName("Latte");
+        recipe1.setName("Latte");
+        recipe2.setName("Espresso");
+
+        assertEquals(recipe.hashCode(), recipe1.hashCode());
+        assertNotEquals(recipe.hashCode(), recipe2.hashCode());
     }
 
     @Test
