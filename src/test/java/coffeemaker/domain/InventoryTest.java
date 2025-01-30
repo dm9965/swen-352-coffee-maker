@@ -55,11 +55,18 @@ public class InventoryTest {
     @Test
     void testAddSugar() {
         assertThrows(InventoryException.class, () -> invent.addSugar("5.2"));
-        assertThrows(InventoryException.class, () -> invent.addSugar("-6"));
+//        assertThrows(InventoryException.class, () -> invent.addSugar("-6"));
         //Defect above since it tries to add negative amounts of sugar
         invent.addSugar("5");
         assertEquals(20, invent.getSugar());
     }
+
+    @Test
+    void testAddSugarNegative()
+    {
+        assertThrows(InventoryException.class, () -> invent.addSugar("-6"));
+    }
+
 
     @Test
     void testSetChocolate() {
@@ -85,6 +92,23 @@ public class InventoryTest {
     }
 
     @Test
+    void testUseIngredientsNotEnough() {
+        r.setAmtCoffee("15");
+        r.setAmtMilk("15");
+        r.setAmtSugar("15");
+        r.setAmtChocolate("15");
+
+        assertTrue(invent.useIngredients(r));
+
+        assertEquals(0, invent.getMilk());
+        assertEquals(0, invent.getCoffee());
+        assertEquals(0, invent.getSugar());
+        assertEquals(0, invent.getChocolate());
+
+        assertFalse(invent.useIngredients(r));
+    }
+
+    @Test
     void testUseIngredients() {
         r.setAmtCoffee("15");
         r.setAmtMilk("15");
@@ -94,13 +118,9 @@ public class InventoryTest {
         assertTrue(invent.useIngredients(r));
 
         assertEquals(0, invent.getMilk());
-        //assertEquals(0, invent.getCoffee());
-        //Another defect above since it adds the coffee rather than substracting it
+        assertEquals(0, invent.getCoffee());
         assertEquals(0, invent.getSugar());
         assertEquals(0, invent.getChocolate());
-
-        assertFalse(invent.useIngredients(r));
-
     }
 
     @Test
