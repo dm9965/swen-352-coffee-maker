@@ -144,4 +144,26 @@ class RecipeTest {
         assertFalse(recipe.equals(differentRecipe));
 
     }
+
+    @Test
+    void testRecipeSameName()
+    {
+        recipe.setName("Lavazza");
+        recipe.setAmtSugar("3");
+        recipe.setPrice("4");
+        recipe.setAmtMilk("2");
+        recipe.setAmtChocolate("4");
+        recipe.setAmtCoffee("2");
+
+        Recipe sameRecipe = new Recipe();
+
+        sameRecipe.setName("Lavazza");
+        sameRecipe.setAmtSugar("3");
+        sameRecipe.setPrice("4");
+        sameRecipe.setAmtMilk("2");
+        sameRecipe.setAmtChocolate("4");
+        sameRecipe.setAmtCoffee("3");
+
+        assertFalse(recipe.equals(sameRecipe));
+    }
 }

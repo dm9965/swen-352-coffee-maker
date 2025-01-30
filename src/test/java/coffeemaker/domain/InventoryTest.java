@@ -92,6 +92,12 @@ public class InventoryTest {
     }
 
     @Test
+    void testEnoughIngredientsNullRecipe()
+    {
+        assertFalse(invent.enoughIngredients(null));
+    }
+
+    @Test
     void testUseIngredientsNotEnough() {
         r.setAmtCoffee("15");
         r.setAmtMilk("15");

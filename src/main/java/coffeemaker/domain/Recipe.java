@@ -204,6 +204,14 @@ public class Recipe {
       }
     } else if (!name.equals(other.name)) {
       return false;
+    } else if(amtCoffee != other.amtCoffee) {
+      return false;
+    } else if (amtMilk != other.amtMilk) {
+      return false;
+    } else if (amtSugar != other.amtSugar) {
+      return false;
+    } else if (amtChocolate != other.amtChocolate) {
+      return false;
     }
     return true;
   }
