@@ -9,8 +9,11 @@ class RecipeBookTest {
     @Test
     void getRecipes() {
         RecipeBook recipeBook = new RecipeBook();
-        assertNotNull(recipeBook.getRecipes());
-        assert(recipeBook.getRecipes().length == 4);
+        assertAll(
+                () -> assertNotNull(recipeBook.getRecipes()),
+                () -> assertEquals(recipeBook.getRecipes().length, 4),
+                () -> assertNull(recipeBook.getRecipes()[0])
+        );
     }
 
     @Test
@@ -18,8 +21,27 @@ class RecipeBookTest {
         RecipeBook recipeBook = new RecipeBook();
         Recipe recipe = new Recipe();
         recipe.setName("Test");
-        assert(recipeBook.addRecipe(recipe));
-        assert(recipeBook.getRecipes()[0].getName().equals("Test"));
+        assertAll(
+                () -> assertTrue(recipeBook.addRecipe(recipe)),
+                () -> assertEquals(recipeBook.getRecipes()[0].getName(), "Test")
+        );
+    }
+
+    @Test
+    void testAddRecipeOrder() {
+        RecipeBook recipeBook = new RecipeBook();
+        for(int i = 0; i < recipeBook.getRecipes().length; i++)
+        {
+            Recipe recipe = new Recipe();
+            recipe.setName("Test" + i);
+            recipeBook.addRecipe(recipe);
+        }
+        assertAll(
+                () -> assertEquals(recipeBook.getRecipes()[0].getName(),"Test0"),
+                () -> assertEquals(recipeBook.getRecipes()[1].getName(),"Test1"),
+                () -> assertEquals(recipeBook.getRecipes()[2].getName(),"Test2"),
+                () -> assertEquals(recipeBook.getRecipes()[3].getName(),"Test3")
+        );
     }
 
     @Test
@@ -87,14 +109,41 @@ class RecipeBookTest {
         recipeBook.addRecipe(oldRecipe);
         Recipe newRecipe = new Recipe();
         newRecipe.setName("AfterTest");
-        assertEquals(recipeBook.replaceRecipe(0,newRecipe),"BeforeTest");
-        assert(recipeBook.getRecipes()[0].getName().equals("AfterTest"));
+        assertAll(
+                () -> assertEquals(recipeBook.replaceRecipe(0,newRecipe),"BeforeTest"),
+                () -> assertEquals(recipeBook.getRecipes()[0].getName(),"AfterTest")
+        );
+    }
+
+    @Test
+    void replaceNullRecipe() {
+        RecipeBook recipeBook = new RecipeBook();
+        Recipe oldRecipe = new Recipe();
+        assertNull(recipeBook.replaceRecipe(0,oldRecipe));
     }
 
     @Test
     void replaceRecipeNull() {
         RecipeBook recipeBook = new RecipeBook();
-        Recipe oldRecipe = new Recipe();
-        assertNull(recipeBook.replaceRecipe(0,oldRecipe));
+        Recipe newRecipe = new Recipe();
+        newRecipe.setName("BeforeTest");
+        recipeBook.addRecipe(newRecipe);
+        assertAll(
+                () -> assertEquals(recipeBook.replaceRecipe(0,null),"BeforeTest"),
+                () -> assertNull(recipeBook.getRecipes()[0])
+        );
+    }
+
+    @Test
+    void testReplaceRecipeDuplicate()
+    {
+        RecipeBook recipeBook = new RecipeBook();
+        Recipe newRecipe = new Recipe();
+        newRecipe.setName("BeforeTest");
+        recipeBook.addRecipe(newRecipe);
+        assertAll(
+                () -> assertEquals(recipeBook.replaceRecipe(0,newRecipe),"BeforeTest"),
+                () -> assertEquals(recipeBook.getRecipes()[0].getName(), "BeforeTest")
+        );
     }
 }
