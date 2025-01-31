@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+CoffeeMaker,coffeemaker.domain,Recipe,72,177,15,19,22,61,14,19,0,16
+CoffeeMaker,coffeemaker.domain,Inventory,0,286,0,26,0,89,0,29,0,16
+CoffeeMaker,coffeemaker.domain,RecipeBook,0,99,0,16,0,25,0,13,0,5
+CoffeeMaker,coffeemaker,Main,431,0,46,0,147,0,34,0,11,0
+CoffeeMaker,coffeemaker,CoffeeMaker,95,0,6,0,23,0,11,0,8,0
+CoffeeMaker,coffeemaker.exceptions,InventoryException,0,4,0,0,0,2,0,1,0,1
+CoffeeMaker,coffeemaker.exceptions,RecipeException,4,0,0,0,2,0,1,0,1,0

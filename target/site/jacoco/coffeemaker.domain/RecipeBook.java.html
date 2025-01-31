@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecipeBook.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CoffeeMaker</a> &gt; <a href="index.source.html" class="el_package">coffeemaker.domain</a> &gt; <span class="el_source">RecipeBook.java</span></div><h1>RecipeBook.java</h1><pre class="source lang-java linenums">package coffeemaker.domain;
+
+/**
+ * The recipe book for the coffee maker.
+ * &lt;p&gt;
+ * The book can hold a fixed number of {@linkplain Recipe recipes};
+ * currently four slots.
+ * &lt;p&gt;
+ *   There are three operations:
+ *   &lt;ul&gt;
+ *     &lt;li&gt;Add a new recipe to an open slot in the book.&lt;/li&gt;
+ *     &lt;li&gt;Delete a recipe as a specific slot in the book.&lt;/li&gt;
+ *     &lt;li&gt;Replace a recipe as a specific slot in the book.&lt;/li&gt;
+ *   &lt;/ul&gt;
+ *   You can also access the complete set of recipes in the book.
+ * &lt;/p&gt;
+ *
+ * @author Sarah Heckman
+ * @author Bryan Basham
+ */
+public class RecipeBook {
+
+  /**
+   * Number of recipes in coffee maker
+   */
+  private static final int NUM_RECIPES = 4;
+
+  /**
+   * Array of recipes in coffee maker
+   */
+  private Recipe[] recipeArray;
+
+  /**
+   * Default constructor for a RecipeBook.
+   */
+<span class="fc" id="L36">  public RecipeBook() {</span>
+<span class="fc" id="L37">    recipeArray = new Recipe[NUM_RECIPES];</span>
+<span class="fc" id="L38">  }</span>
+
+  /**
+   * Get the recipe book.
+   */
+  public Recipe[] getRecipes() {
+<span class="fc" id="L44">    return recipeArray;</span>
+  }
+
+  /**
+   * Add a new {@link Recipe} to the book.
+   * &lt;p&gt;
+   * The book is filled from front to back; the add operation fills the first available
+   * (empty, aka {@code null}) slot and returns {@code true}.
+   * &lt;p&gt;
+   * If the recipe already exists in the book, then nothing changes
+   * and {@code false} is returned.
+   *
+   * @param newRecipe the new {@link Recipe} to add
+   * @return {@code true} if the operation succeeds; otherwise {@code false}
+   */
+  public boolean addRecipe(Recipe newRecipe) {
+    //Assume the recipe doesn't exist in the array until find out otherwise
+<span class="fc" id="L61">    boolean exists = false;</span>
+    //Check that recipe doesn't already exist in the array
+<span class="fc bfc" id="L63" title="All 2 branches covered.">    for (int i = 0; i &lt; recipeArray.length; i++) {</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">      if (newRecipe.equals(recipeArray[i])) {</span>
+<span class="fc" id="L65">        exists = true;</span>
+      }
+    }
+    //Assume the recipe cannot be added until find an empty spot
+<span class="fc" id="L69">    boolean added = false;</span>
+    //Check for the first empty spot in the array
+<span class="fc bfc" id="L71" title="All 2 branches covered.">    if (!exists) {</span>
+<span class="fc bfc" id="L72" title="All 4 branches covered.">      for (int i = 0; i &lt; recipeArray.length &amp;&amp; !added; i++) {</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if (recipeArray[i] == null) {</span>
+<span class="fc" id="L74">          recipeArray[i] = newRecipe;</span>
+<span class="fc" id="L75">          added = true;</span>
+        }
+      }
+    }
+<span class="fc" id="L79">    return added;</span>
+  }
+
+  /**
+   * Delete the {@linkplain Recipe recipe} at the slot specified.
+   * &lt;p&gt;
+   * Returns the name of the recipe deleted at the slot specified,
+   * or null if there is no recipe at that slot.
+   *
+   * @param recipeToDelete the index of the slot in the book
+   * @return the name of the old recipe or {@code null} if the delete operation failed
+   */
+  public String deleteRecipe(int recipeToDelete) {
+<span class="fc bfc" id="L92" title="All 2 branches covered.">    if (recipeArray[recipeToDelete] != null) {</span>
+<span class="fc" id="L93">      String recipeName = recipeArray[recipeToDelete].getName();</span>
+<span class="fc" id="L94">      recipeArray[recipeToDelete] = null;</span>
+<span class="fc" id="L95">      return recipeName;</span>
+    } else {
+<span class="fc" id="L97">      return null;</span>
+    }
+  }
+
+  /**
+   * Replace the {@linkplain Recipe recipe} at the slot specified with a new one.
+   * &lt;p&gt;
+   * Returns the name of the recipe replaced at the position specified,
+   * or null if there is no recipe at that slot.
+   *
+   * @param recipeToReplace the index of the slot in the book
+   * @param newRecipe the new {@link Recipe} to fill the slot
+   * @return the name of the old recipe or {@code null} if the replace operation failed
+   */
+  public String replaceRecipe(int recipeToReplace, Recipe newRecipe) {
+<span class="fc bfc" id="L112" title="All 2 branches covered.">    if (recipeArray[recipeToReplace] != null) {</span>
+<span class="fc" id="L113">      String recipeName = recipeArray[recipeToReplace].getName();</span>
+<span class="fc" id="L114">      recipeArray[recipeToReplace] = newRecipe;</span>
+<span class="fc" id="L115">      return recipeName;</span>
+    } else {
+<span class="fc" id="L117">      return null;</span>
+    }
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

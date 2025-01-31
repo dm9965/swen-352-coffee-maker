@@ -55,6 +55,13 @@ class RecipeBookTest {
     }
 
     @Test
+    void testDeleteRecipeNull()
+    {
+        RecipeBook recipeBook = new RecipeBook();
+        assertNull(recipeBook.deleteRecipe(0));
+    }
+
+    @Test
     void DeleteRecipeFull() {
         RecipeBook recipeBook = new RecipeBook();
         for(int i = 0; i < recipeBook.getRecipes().length; i++)
@@ -82,5 +89,12 @@ class RecipeBookTest {
         newRecipe.setName("AfterTest");
         assertEquals(recipeBook.replaceRecipe(0,newRecipe),"BeforeTest");
         assert(recipeBook.getRecipes()[0].getName().equals("AfterTest"));
+    }
+
+    @Test
+    void replaceRecipeNull() {
+        RecipeBook recipeBook = new RecipeBook();
+        Recipe oldRecipe = new Recipe();
+        assertNull(recipeBook.replaceRecipe(0,oldRecipe));
     }
 }

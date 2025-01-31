@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Recipe.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CoffeeMaker</a> &gt; <a href="index.source.html" class="el_package">coffeemaker.domain</a> &gt; <span class="el_source">Recipe.java</span></div><h1>Recipe.java</h1><pre class="source lang-java linenums">package coffeemaker.domain;
+
+import coffeemaker.exceptions.RecipeException;
+
+/**
+ * A Recipe is an Entity component that maintains the data for a specific coffee product.
+ * It must have a non-null String name and non-negative price and ingredient amounts.
+ *
+ * @author Sarah Heckman
+ */
+public class Recipe {
+
+  private String name;
+  private int price;
+  private int amtCoffee;
+  private int amtMilk;
+  private int amtSugar;
+  private int amtChocolate;
+
+  /**
+   * Creates a default recipe for the coffee maker.
+   */
+<span class="fc" id="L23">  public Recipe() {</span>
+<span class="fc" id="L24">    this.name = &quot;&quot;;</span>
+<span class="fc" id="L25">    this.price = 0;</span>
+<span class="fc" id="L26">    this.amtCoffee = 0;</span>
+<span class="fc" id="L27">    this.amtMilk = 0;</span>
+<span class="fc" id="L28">    this.amtSugar = 0;</span>
+<span class="fc" id="L29">    this.amtChocolate = 0;</span>
+<span class="fc" id="L30">  }</span>
+
+  /**
+   * Get the name of this recipe.
+   */
+  public String getName() {
+<span class="fc" id="L36">    return name;</span>
+  }
+
+  /**
+   * Set the name of this recipe.
+   * @param name The name to set; must have at least one non-blank character.
+   */
+  public void setName(String name) {
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">    if (name != null) {</span>
+<span class="fc" id="L45">      this.name = name;</span>
+    }
+<span class="fc" id="L47">  }</span>
+
+  /**
+   * Get the amount of price needed for this recipe.
+   */
+  public int getPrice() {
+<span class="fc" id="L53">    return price;</span>
+  }
+
+  /**
+   * Set the amount of price needed for this recipe.
+   * @param price The price to set.
+   */
+  public void setPrice(String price) throws RecipeException {
+    int amtPrice;
+    try {
+<span class="fc" id="L63">      amtPrice = Integer.parseInt(price);</span>
+<span class="nc" id="L64">    } catch (NumberFormatException e) {</span>
+<span class="nc" id="L65">      throw new RecipeException(&quot;Price must be a positive integer&quot;);</span>
+<span class="fc" id="L66">    }</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">    if (amtPrice &gt;= 0) {</span>
+<span class="fc" id="L68">      this.price = amtPrice;</span>
+    } else {
+<span class="nc" id="L70">      throw new RecipeException(&quot;Price must be a positive integer&quot;);</span>
+    }
+<span class="fc" id="L72">  }</span>
+
+  /**
+   * Get the amount of coffee needed for this recipe.
+   */
+  public int getAmtCoffee() {
+<span class="fc" id="L78">    return amtCoffee;</span>
+  }
+
+  /**
+   * Set the amount of coffee needed for this recipe.
+   * @param coffee  The amount of coffee to set.
+   */
+  public void setAmtCoffee(String coffee) throws RecipeException {
+    int amtCoffee;
+    try {
+<span class="fc" id="L88">      amtCoffee = Integer.parseInt(coffee);</span>
+<span class="nc" id="L89">    } catch (NumberFormatException e) {</span>
+<span class="nc" id="L90">      throw new RecipeException(&quot;Units of coffee must be a positive integer&quot;);</span>
+<span class="fc" id="L91">    }</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">    if (amtCoffee &gt;= 0) {</span>
+<span class="fc" id="L93">      this.amtCoffee = amtCoffee;</span>
+    } else {
+<span class="nc" id="L95">      throw new RecipeException(&quot;Units of coffee must be a positive integer&quot;);</span>
+    }
+<span class="fc" id="L97">  }</span>
+
+  /**
+   * Get the amount of milk needed for this recipe.
+   */
+  public int getAmtMilk() {
+<span class="fc" id="L103">    return amtMilk;</span>
+  }
+
+  /**
+   * Set the amount of milk needed for this recipe.
+   * @param milk  The amount of milk to set.
+   */
+  public void setAmtMilk(String milk) throws RecipeException {
+    int amtMilk;
+    try {
+<span class="fc" id="L113">      amtMilk = Integer.parseInt(milk);</span>
+<span class="nc" id="L114">    } catch (NumberFormatException e) {</span>
+<span class="nc" id="L115">      throw new RecipeException(&quot;Units of milk must be a positive integer&quot;);</span>
+<span class="fc" id="L116">    }</span>
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">    if (amtMilk &gt;= 0) {</span>
+<span class="fc" id="L118">      this.amtMilk = amtMilk;</span>
+    } else {
+<span class="nc" id="L120">      throw new RecipeException(&quot;Units of milk must be a positive integer&quot;);</span>
+    }
+<span class="fc" id="L122">  }</span>
+
+  /**
+   * Get the amount of sugar needed for this recipe.
+   */
+  public int getAmtSugar() {
+<span class="fc" id="L128">    return amtSugar;</span>
+  }
+
+  /**
+   * Set the amount of sugar needed for this recipe.
+   * @param sugar  The amount of sugar to set.
+   */
+  public void setAmtSugar(String sugar) throws RecipeException {
+    int amtSugar;
+    try {
+<span class="fc" id="L138">      amtSugar = Integer.parseInt(sugar);</span>
+<span class="nc" id="L139">    } catch (NumberFormatException e) {</span>
+<span class="nc" id="L140">      throw new RecipeException(&quot;Units of sugar must be a positive integer&quot;);</span>
+<span class="fc" id="L141">    }</span>
+<span class="pc bpc" id="L142" title="1 of 2 branches missed.">    if (amtSugar &gt;= 0) {</span>
+<span class="fc" id="L143">      this.amtSugar = amtSugar;</span>
+    } else {
+<span class="nc" id="L145">      throw new RecipeException(&quot;Units of sugar must be a positive integer&quot;);</span>
+    }
+<span class="fc" id="L147">  }</span>
+
+  /**
+   * Get the amount of chocolate needed for this recipe.
+   */
+  public int getAmtChocolate() {
+<span class="fc" id="L153">    return amtChocolate;</span>
+  }
+
+  /**
+   * Set the amount of chocolate needed for this recipe.
+   * @param chocolate  The amount of chocolate to set.
+   */
+  public void setAmtChocolate(String chocolate) throws RecipeException {
+    int amtChocolate;
+    try {
+<span class="fc" id="L163">      amtChocolate = Integer.parseInt(chocolate);</span>
+<span class="nc" id="L164">    } catch (NumberFormatException e) {</span>
+<span class="nc" id="L165">      throw new RecipeException(&quot;Units of chocolate must be a positive integer&quot;);</span>
+<span class="fc" id="L166">    }</span>
+<span class="pc bpc" id="L167" title="1 of 2 branches missed.">    if (amtChocolate &gt;= 0) {</span>
+<span class="fc" id="L168">      this.amtChocolate = amtChocolate;</span>
+    } else {
+<span class="nc" id="L170">      throw new RecipeException(&quot;Units of chocolate must be a positive integer&quot;);</span>
+    }
+<span class="fc" id="L172">  }</span>
+
+  /**
+   * Returns a textual representation of a recipe using its name.
+   */
+  public String toString() {
+<span class="fc" id="L178">    return String.format(&quot;Recipe{%s}&quot;, name);</span>
+  }
+
+  @Override
+  public int hashCode() {
+<span class="fc" id="L183">    final int prime = 31;</span>
+<span class="fc" id="L184">    int result = 1;</span>
+<span class="pc bpc" id="L185" title="1 of 2 branches missed.">    result = prime * result + ((name == null) ? 0 : name.hashCode());</span>
+<span class="fc" id="L186">    return result;</span>
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+<span class="pc bpc" id="L191" title="1 of 2 branches missed.">    if (this == obj) {</span>
+<span class="nc" id="L192">      return true;</span>
+    }
+<span class="fc bfc" id="L194" title="All 2 branches covered.">    if (obj == null) {</span>
+<span class="fc" id="L195">      return false;</span>
+    }
+<span class="pc bpc" id="L197" title="1 of 2 branches missed.">    if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L198">      return false;</span>
+    }
+<span class="fc" id="L200">    final Recipe other = (Recipe) obj;</span>
+<span class="pc bpc" id="L201" title="1 of 2 branches missed.">    if (name == null) {</span>
+<span class="nc bnc" id="L202" title="All 2 branches missed.">      if (other.name != null) {</span>
+<span class="nc" id="L203">        return false;</span>
+      }
+<span class="fc bfc" id="L205" title="All 2 branches covered.">    } else if (!name.equals(other.name)) {</span>
+<span class="fc" id="L206">      return false;</span>
+<span class="fc bfc" id="L207" title="All 2 branches covered.">    } else if(amtCoffee != other.amtCoffee) {</span>
+<span class="fc" id="L208">      return false;</span>
+<span class="pc bpc" id="L209" title="1 of 2 branches missed.">    } else if (amtMilk != other.amtMilk) {</span>
+<span class="nc" id="L210">      return false;</span>
+<span class="pc bpc" id="L211" title="1 of 2 branches missed.">    } else if (amtSugar != other.amtSugar) {</span>
+<span class="nc" id="L212">      return false;</span>
+<span class="pc bpc" id="L213" title="1 of 2 branches missed.">    } else if (amtChocolate != other.amtChocolate) {</span>
+<span class="nc" id="L214">      return false;</span>
+    }
+<span class="fc" id="L216">    return true;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
