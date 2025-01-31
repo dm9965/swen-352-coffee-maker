@@ -198,6 +198,16 @@ class RecipeTest {
     }
 
     @Test
+    void testHashCodeNull()
+    {
+        Recipe recipe2 = new Recipe();
+        recipe.setName("Latte");
+        recipe2.setName("Latte");
+        recipe2.setName(null);
+        assertEquals(recipe.hashCode(), recipe2.hashCode());
+    }
+
+    @Test
     void testEquals() {
         recipe.setName("Lavazza");
         recipe.setAmtSugar("3");

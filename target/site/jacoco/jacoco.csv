@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-CoffeeMaker,coffeemaker.domain,Recipe,2,239,1,29,0,80,1,30,0,16
+CoffeeMaker,coffeemaker.domain,Recipe,0,236,0,28,0,80,0,30,0,16
 CoffeeMaker,coffeemaker.domain,Inventory,0,286,0,26,0,89,0,29,0,16
 CoffeeMaker,coffeemaker.domain,RecipeBook,0,99,0,16,0,25,0,13,0,5
 CoffeeMaker,coffeemaker,Main,431,0,46,0,147,0,34,0,11,0
