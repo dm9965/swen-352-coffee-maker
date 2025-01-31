@@ -41,7 +41,7 @@ public class Recipe {
    * @param name The name to set; must have at least one non-blank character.
    */
   public void setName(String name) {
-<span class="pc bpc" id="L44" title="1 of 2 branches missed.">    if (name != null) {</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">    if (name != null) {</span>
 <span class="fc" id="L45">      this.name = name;</span>
     }
 <span class="fc" id="L47">  }</span>
@@ -61,13 +61,13 @@ public class Recipe {
     int amtPrice;
     try {
 <span class="fc" id="L63">      amtPrice = Integer.parseInt(price);</span>
-<span class="nc" id="L64">    } catch (NumberFormatException e) {</span>
-<span class="nc" id="L65">      throw new RecipeException(&quot;Price must be a positive integer&quot;);</span>
+<span class="fc" id="L64">    } catch (NumberFormatException e) {</span>
+<span class="fc" id="L65">      throw new RecipeException(&quot;Price must be a positive integer&quot;);</span>
 <span class="fc" id="L66">    }</span>
-<span class="pc bpc" id="L67" title="1 of 2 branches missed.">    if (amtPrice &gt;= 0) {</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">    if (amtPrice &gt;= 0) {</span>
 <span class="fc" id="L68">      this.price = amtPrice;</span>
     } else {
-<span class="nc" id="L70">      throw new RecipeException(&quot;Price must be a positive integer&quot;);</span>
+<span class="fc" id="L70">      throw new RecipeException(&quot;Price must be a positive integer&quot;);</span>
     }
 <span class="fc" id="L72">  }</span>
 
@@ -86,13 +86,13 @@ public class Recipe {
     int amtCoffee;
     try {
 <span class="fc" id="L88">      amtCoffee = Integer.parseInt(coffee);</span>
-<span class="nc" id="L89">    } catch (NumberFormatException e) {</span>
-<span class="nc" id="L90">      throw new RecipeException(&quot;Units of coffee must be a positive integer&quot;);</span>
+<span class="fc" id="L89">    } catch (NumberFormatException e) {</span>
+<span class="fc" id="L90">      throw new RecipeException(&quot;Units of coffee must be a positive integer&quot;);</span>
 <span class="fc" id="L91">    }</span>
-<span class="pc bpc" id="L92" title="1 of 2 branches missed.">    if (amtCoffee &gt;= 0) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">    if (amtCoffee &gt;= 0) {</span>
 <span class="fc" id="L93">      this.amtCoffee = amtCoffee;</span>
     } else {
-<span class="nc" id="L95">      throw new RecipeException(&quot;Units of coffee must be a positive integer&quot;);</span>
+<span class="fc" id="L95">      throw new RecipeException(&quot;Units of coffee must be a positive integer&quot;);</span>
     }
 <span class="fc" id="L97">  }</span>
 
@@ -111,13 +111,13 @@ public class Recipe {
     int amtMilk;
     try {
 <span class="fc" id="L113">      amtMilk = Integer.parseInt(milk);</span>
-<span class="nc" id="L114">    } catch (NumberFormatException e) {</span>
-<span class="nc" id="L115">      throw new RecipeException(&quot;Units of milk must be a positive integer&quot;);</span>
+<span class="fc" id="L114">    } catch (NumberFormatException e) {</span>
+<span class="fc" id="L115">      throw new RecipeException(&quot;Units of milk must be a positive integer&quot;);</span>
 <span class="fc" id="L116">    }</span>
-<span class="pc bpc" id="L117" title="1 of 2 branches missed.">    if (amtMilk &gt;= 0) {</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">    if (amtMilk &gt;= 0) {</span>
 <span class="fc" id="L118">      this.amtMilk = amtMilk;</span>
     } else {
-<span class="nc" id="L120">      throw new RecipeException(&quot;Units of milk must be a positive integer&quot;);</span>
+<span class="fc" id="L120">      throw new RecipeException(&quot;Units of milk must be a positive integer&quot;);</span>
     }
 <span class="fc" id="L122">  }</span>
 
@@ -136,13 +136,13 @@ public class Recipe {
     int amtSugar;
     try {
 <span class="fc" id="L138">      amtSugar = Integer.parseInt(sugar);</span>
-<span class="nc" id="L139">    } catch (NumberFormatException e) {</span>
-<span class="nc" id="L140">      throw new RecipeException(&quot;Units of sugar must be a positive integer&quot;);</span>
+<span class="fc" id="L139">    } catch (NumberFormatException e) {</span>
+<span class="fc" id="L140">      throw new RecipeException(&quot;Units of sugar must be a positive integer&quot;);</span>
 <span class="fc" id="L141">    }</span>
-<span class="pc bpc" id="L142" title="1 of 2 branches missed.">    if (amtSugar &gt;= 0) {</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">    if (amtSugar &gt;= 0) {</span>
 <span class="fc" id="L143">      this.amtSugar = amtSugar;</span>
     } else {
-<span class="nc" id="L145">      throw new RecipeException(&quot;Units of sugar must be a positive integer&quot;);</span>
+<span class="fc" id="L145">      throw new RecipeException(&quot;Units of sugar must be a positive integer&quot;);</span>
     }
 <span class="fc" id="L147">  }</span>
 
@@ -161,13 +161,13 @@ public class Recipe {
     int amtChocolate;
     try {
 <span class="fc" id="L163">      amtChocolate = Integer.parseInt(chocolate);</span>
-<span class="nc" id="L164">    } catch (NumberFormatException e) {</span>
-<span class="nc" id="L165">      throw new RecipeException(&quot;Units of chocolate must be a positive integer&quot;);</span>
+<span class="fc" id="L164">    } catch (NumberFormatException e) {</span>
+<span class="fc" id="L165">      throw new RecipeException(&quot;Units of chocolate must be a positive integer&quot;);</span>
 <span class="fc" id="L166">    }</span>
-<span class="pc bpc" id="L167" title="1 of 2 branches missed.">    if (amtChocolate &gt;= 0) {</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">    if (amtChocolate &gt;= 0) {</span>
 <span class="fc" id="L168">      this.amtChocolate = amtChocolate;</span>
     } else {
-<span class="nc" id="L170">      throw new RecipeException(&quot;Units of chocolate must be a positive integer&quot;);</span>
+<span class="fc" id="L170">      throw new RecipeException(&quot;Units of chocolate must be a positive integer&quot;);</span>
     }
 <span class="fc" id="L172">  }</span>
 
@@ -188,32 +188,28 @@ public class Recipe {
 
   @Override
   public boolean equals(Object obj) {
-<span class="pc bpc" id="L191" title="1 of 2 branches missed.">    if (this == obj) {</span>
-<span class="nc" id="L192">      return true;</span>
+<span class="fc bfc" id="L191" title="All 2 branches covered.">    if (this == obj) {</span>
+<span class="fc" id="L192">      return true;</span>
     }
 <span class="fc bfc" id="L194" title="All 2 branches covered.">    if (obj == null) {</span>
 <span class="fc" id="L195">      return false;</span>
     }
-<span class="pc bpc" id="L197" title="1 of 2 branches missed.">    if (getClass() != obj.getClass()) {</span>
-<span class="nc" id="L198">      return false;</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">    if (getClass() != obj.getClass()) {</span>
+<span class="fc" id="L198">      return false;</span>
     }
 <span class="fc" id="L200">    final Recipe other = (Recipe) obj;</span>
-<span class="pc bpc" id="L201" title="1 of 2 branches missed.">    if (name == null) {</span>
-<span class="nc bnc" id="L202" title="All 2 branches missed.">      if (other.name != null) {</span>
-<span class="nc" id="L203">        return false;</span>
-      }
-<span class="fc bfc" id="L205" title="All 2 branches covered.">    } else if (!name.equals(other.name)) {</span>
+<span class="fc bfc" id="L201" title="All 2 branches covered.">    if (!name.equals(other.name)) {</span>
+<span class="fc" id="L202">      return false;</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">    } else if(amtCoffee != other.amtCoffee) {</span>
+<span class="fc" id="L204">      return false;</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">    } else if (amtMilk != other.amtMilk) {</span>
 <span class="fc" id="L206">      return false;</span>
-<span class="fc bfc" id="L207" title="All 2 branches covered.">    } else if(amtCoffee != other.amtCoffee) {</span>
+<span class="fc bfc" id="L207" title="All 2 branches covered.">    } else if (amtSugar != other.amtSugar) {</span>
 <span class="fc" id="L208">      return false;</span>
-<span class="pc bpc" id="L209" title="1 of 2 branches missed.">    } else if (amtMilk != other.amtMilk) {</span>
-<span class="nc" id="L210">      return false;</span>
-<span class="pc bpc" id="L211" title="1 of 2 branches missed.">    } else if (amtSugar != other.amtSugar) {</span>
-<span class="nc" id="L212">      return false;</span>
-<span class="pc bpc" id="L213" title="1 of 2 branches missed.">    } else if (amtChocolate != other.amtChocolate) {</span>
-<span class="nc" id="L214">      return false;</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">    } else if (amtChocolate != other.amtChocolate) {</span>
+<span class="fc" id="L210">      return false;</span>
     }
-<span class="fc" id="L216">    return true;</span>
+<span class="fc" id="L212">    return true;</span>
   }
 
 }
